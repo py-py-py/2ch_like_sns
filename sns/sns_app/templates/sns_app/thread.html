@@ -1,0 +1,22 @@
+{% extends "sns_app/base.html" %}
+
+{% block title %}
+<title>detail view</title>
+{% endblock title %}
+
+{% block content %}
+{% if thread %}
+    <h1>{{ thread.thread_name }}</h1>
+    <a href="{% url 'sns_app:create_post' thread.id %}">create respost</a>
+    {% if response_posts %}
+        {% for response_post in response_posts %}
+            <p>{{ response_post.id }}{{ response_post.post_user }} {{ response_post.posted_date }}</p>
+            <a href="{% url 'sns_app:detail' thread.id response_post.id %}"><p>{{ response_post.post_text }}</p></a>
+        {% endfor %}
+    {% else %}
+        <p>レスポンスのポストがありません</p>
+    {% endif %}
+{% else %}
+    <p>スレッドがありません</p>
+{% endif %}
+{% endblock content %}

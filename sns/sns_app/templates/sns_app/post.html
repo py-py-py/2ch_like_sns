@@ -1,0 +1,13 @@
+{% extends "sns_app/base.html" %}
+
+{% block title %}
+    <title>post html</title>
+{% endblock title %}
+
+{% block content %}
+    {% if respost_text %}
+        <p>{{ respost_text }}</p>
+    {% else %}
+        <p>error happens</p>
+    {% endif %}
+{% endblock content %}

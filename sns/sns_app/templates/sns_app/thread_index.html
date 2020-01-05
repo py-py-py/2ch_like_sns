@@ -1,0 +1,17 @@
+{% extends "sns_app/base.html" %}
+
+{% block title %}
+<title>index thread</title>
+{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'sns_app:create_thread' %}">create thread</a>
+{% if threads %}
+    {% for thread in threads %}
+        <li><a href="{% url 'sns_app:thread' thread.id %}">{{ thread.thread_name }} {{ thread.thread_created_date }}</a></li>
+    {% endfor %}
+{% else %}
+    <p>スレッドがありません</p>
+{% endif %}
+
+{% endblock %}
