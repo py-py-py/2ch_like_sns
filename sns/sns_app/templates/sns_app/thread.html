@@ -7,7 +7,7 @@
 {% block content %}
 {% if thread %}
     <h1>{{ thread.thread_name }}</h1>
-    <a href="{% url 'sns_app:create_post' thread.id %}">create respost</a>
+    <a href="{% url 'sns_app:create_post' thread.id %}">発言作成ページへ遷移する</a>
     {% if response_posts %}
         {% for response_post in response_posts %}
             <p>{{ response_post.id }}{{ response_post.post_user }} {{ response_post.posted_date }}</p>
