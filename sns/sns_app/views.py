@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Thread, ResPost
 from django.views import generic
-from .forms import CreateThread, CreateResPost
+from .forms import CreateThread, CreateResPostForm
 from django.urls import reverse_lazy
+from django.urls import reverse
 
 
 def thread_index_view(request):
@@ -39,13 +40,8 @@ class CreateThreadView(generic.CreateView):
 class CreateResPost(generic.CreateView):
     template_name = "sns_app/create_respost.html"
     model = ResPost
-    form_class = CreateResPost
-    success_url = reverse_lazy("sns_app:thread")
+    form_class = CreateResPostForm
 
-
-def create_respost_ver2(request, thread_id):
-    from .forms import CreateRespost2
-
-    form = CreateRespost2(request.GET)
-    context = {"form": form, "thread_id": thread_id}
-    return render(request, template_name="sns_app/create_response_ver2.html", context=context)
+    # success_urlの引数が足りないため
+    def get_success_url(self):
+        return reverse("sns_app:thread", kwargs={"thread_id": self.kwargs["pk"]})
