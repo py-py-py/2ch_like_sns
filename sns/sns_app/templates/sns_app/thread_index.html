@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-    <a href="{% url 'sns_app:create_thread' %}">create thread</a>
+    <a href="{% url 'sns_app:create_thread' %}">スレッド作成ページへ遷移する</a>
 {% if threads %}
     {% for thread in threads %}
         <li><a href="{% url 'sns_app:thread' thread.id %}">{{ thread.thread_name }} {{ thread.thread_created_date }}</a></li>
