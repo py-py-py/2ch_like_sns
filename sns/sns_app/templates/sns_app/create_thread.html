@@ -5,6 +5,7 @@
 {% endblock title %}
 
 {% block content %}
+    <a href="{% url 'sns_app:index' %}">スレッド一覧へ戻る</a>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <table class="table">
