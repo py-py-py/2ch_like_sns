@@ -5,13 +5,22 @@
 {% endblock title %}
 
 {% block content %}
-    <a href="{% url 'sns_app:create_thread' %}">スレッド作成ページへ遷移する</a>
+    <div class="container">
+        <div class="alert alert-primary">
+            <a href="{% url 'sns_app:create_thread' %}">スレッド作成ページへ遷移する</a>
+        </div>
+    </div>
 {% if threads %}
     {% for thread in threads %}
-        <li><a href="{% url 'sns_app:thread' thread.id %}">{{ thread.thread_name }} {{ thread.thread_created_date }}</a></li>
+        <div class="container">
+            <div class="alert alert-secondary">
+                <a href="{% url 'sns_app:thread' thread.id %}">{{ thread.thread_name }} {{ thread.thread_created_date }}</a>
+            </div>
+        </div>
+
     {% endfor %}
 {% else %}
     <p>スレッドがありません</p>
 {% endif %}
 
-{% endblock %}
+{% endblock content %}
