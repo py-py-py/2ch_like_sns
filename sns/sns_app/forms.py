@@ -8,13 +8,8 @@ class CreateThread(forms.ModelForm):
         fields = ("thread_name", )
 
 
-class CreateResPost(forms.ModelForm):
+class CreateResPostForm(forms.ModelForm):
     class Meta:
         model = ResPost
-        fields = ("post_user", "post_text",)
+        fields = ("post_user", "post_text", "thread")
 
-
-class CreateRespost2(forms.Form):
-    thread = forms.IntegerField()
-    post_user = forms.CharField(max_length=20)
-    post_text = forms.Textarea()
