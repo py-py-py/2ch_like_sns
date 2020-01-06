@@ -5,13 +5,13 @@
 {% endblock title %}
 
 {% block content %}
+    <a href="{% url 'sns_app:index' %}">スレッド一覧へ戻る</a>
 {% if thread %}
-    <h1>{{ thread.thread_name }}</h1>
-    <a href="{% url 'sns_app:create_post' thread.id %}">発言作成ページへ遷移する</a>
+    <p>{{ thread.thread_name }}</p>
     {% if response_posts %}
         {% for response_post in response_posts %}
-            <p>{{ response_post.id }}{{ response_post.post_user }} {{ response_post.posted_date }}</p>
-            <a href="{% url 'sns_app:detail' thread.id response_post.id %}"><p>{{ response_post.post_text }}</p></a>
+            <p>{{ response_post.id }} {{ response_post.post_user }} {{ response_post.posted_date }}</p>
+            <p>{{ response_post.post_text }}</p>
         {% endfor %}
     {% else %}
         <p>レスポンスのポストがありません</p>
@@ -19,4 +19,7 @@
 {% else %}
     <p>スレッドがありません</p>
 {% endif %}
+            <div class="alert alert-primary">
+                <a href="{% url 'sns_app:create_post' thread.id %}">発言作成ページへ遷移する</a>
+            </div>
 {% endblock content %}
